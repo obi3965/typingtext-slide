@@ -1,0 +1,81 @@
+body{
+	margin:0;
+	font-family: sans-serif;
+	overflow-x: hidden;
+}
+*{
+	box-sizing: border-box;
+}
+
+.banner{
+	height: 100vh;
+	background-image:url("banner-bg.jpg");
+	background-size:cover;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow:hidden;
+}
+.banner::before{
+	content: '';
+	position: absolute;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 50%;
+	z-index: 1;
+	opacity:0.8;
+	background-color:#3f51b5;
+	transform: translateY(-100%);
+}
+.banner::after{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom:0;
+	width: 100%;
+	height: 50%;
+	z-index: 1;
+	opacity:0.8;
+	background-color:#3f51b5;
+	transform: translateY(100%);
+}
+.banner.open::before{
+	animation:bannerOpenTop 1s ease forwards;
+}
+.banner.open::after{
+	animation:bannerOpenBottom 1s ease forwards;
+}
+@keyframes bannerOpenTop{
+	0%{transform: translateY(0)}
+	100%{transform: translateY(-100)}
+}
+@keyframes bannerOpenBottom{
+	0%{transform: translateY(0)}
+	100%{transform: translateY(100)}
+}
+.banner.close::before{
+animation:bannerCloseTop 1s ease forwards;	
+}
+.banner.close::after{
+animation:bannerCloseBottom 1s ease forwards;	
+}
+@keyframes bannerCloseTop{
+	0%{transform: translateY(-100%)}
+	100%{transform: translateY(0)}
+}
+@keyframes bannerCloseBottom{
+	0%{transform: translateY(100%)}
+	100%{transform: translateY(0)}
+}
+.banner h1{
+	
+	color:#ffffff;
+	font-size: 60px;
+}
+
+.banner h1 .sentences{
+display: none;
+}
